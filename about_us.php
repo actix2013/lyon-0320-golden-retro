@@ -12,7 +12,11 @@
     </section>
       <div class="gca_about_us align_center">
 
-          <!-- Debut d'une card-->     
+        <?php for($i=0;$i<10;$i++){ ?>
+          <?php include 'Cards/_About_Us_Card.php'; ?>
+          <?php } ?>
+
+          <!-- Debut d'une card-->
           <div class="gca_row ">          
                  <div class="gca_img_box guillaume">   </div>             
               
