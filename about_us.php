@@ -1,24 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
+
     <title>Retro Invader</title>
-  <meta lang="en">
-  <meta name="title" content="Retro Invaders">
-  <meta charset="UTF-8">
-  <meta name="description" content="Retro Invaders helps you to find your favorite retro games">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <link rel="stylesheet" type="text/css" href="about_us_style.css">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700,900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700,900|Roboto:300,400,700,900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="header_style.css" />
-  <link rel="stylesheet" type="text/css" href="src/_footer.css" />
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <meta lang="en">
+    <meta name="about_us" content="Retro Invaders">
+    <meta charset="UTF-8">
+    <meta name="description" content="Retro Invaders helps you to find your favorite retro games">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="css/about_us.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/_header.css" />
+    <link rel="stylesheet" type="text/css" href="css/_footer.css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700,900|Roboto:300,400,700,900&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
 
-
-  </head>
   <body>
-
     <div id="nav-mobile-container" class="nav-mobile-full no-content">
             <div class="close-menu-mobile no-content">
                 <span class="bar"></span>
@@ -31,41 +30,11 @@
                         <a href="contact.html"><li>Contact</li></a>
                     </ul>
             </nav>
+    </div>
 
-        </div>
+    <?php include 'includes/_header.php';?>
 
-        <header>
-        <section class="logo">
-            <a href="index.html">
-                <img class ="logo_smartphone" alt="logo_retro_invaders_smartphone" src="https://raw.githubusercontent.com/WildCodeSchool/lyon-0320-golden-retro/dev/Images/Autres/blog-loco-green.png" height="110" width="auto">
-                <div class="logo-header"></div>
-            </a>
-
-        </section>
-
-        <section class="menu_burger_container">
-            <article id="burger-menu-click" class="menu_burger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-
-            </article>
-        </section>
-
-        <nav>
-            <ul>
-                <li><a href="plateformes.html">Platforms</a></li>
-                <li><a href="about_us.html">About Us</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-
-
-
-
-
-    </header>
-      <main>
+    <main>
     <section class="about-us-banner">
       <h1>Meet the team</h1>
       <p>Our passion for video games started when we were young so we love to share it. Non-contractual photographs</p>
