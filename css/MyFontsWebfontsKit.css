@@ -27,11 +27,11 @@
 @font-face {
   src: url('webFonts/Gilroy-Light/font.eot');
   font-family: 'Gilroy-Light';
-  src: url('Gilroy-Light.otf') format('woff2'), url('webFonts/Gilroy-Light/font.woff') format('woff'), url('webFonts/Gilroy-Light/font.eot?#iefix') format('embedded-opentype'), url('webFonts/Gilroy-Light/font.ttf') format('truetype');
+  src: url('../Gilroy-Light.otf') format('woff2'), url('webFonts/Gilroy-Light/font.woff') format('woff'), url('webFonts/Gilroy-Light/font.eot?#iefix') format('embedded-opentype'), url('webFonts/Gilroy-Light/font.ttf') format('truetype');
 }
 @font-face {
   src: url('webFonts/Gilroy-ExtraBold/font.eot');
   font-family: 'Gilroy-ExtraBold';
-  src: url('Gilroy-ExtraBold.otf') format('woff2'), url('webFonts/Gilroy-ExtraBold/font.woff') format('woff'), url('webFonts/Gilroy-ExtraBold/font.eot?#iefix') format('embedded-opentype'), url('webFonts/Gilroy-ExtraBold/font.ttf') format('truetype');
+  src: url('../Gilroy-ExtraBold.otf') format('woff2'), url('webFonts/Gilroy-ExtraBold/font.woff') format('woff'), url('webFonts/Gilroy-ExtraBold/font.eot?#iefix') format('embedded-opentype'), url('webFonts/Gilroy-ExtraBold/font.ttf') format('truetype');
 }
 

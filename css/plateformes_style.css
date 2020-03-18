@@ -47,7 +47,7 @@ p {
     flex-direction:column;
     justify-content:center;
     align-items:center;
-    background-image:linear-gradient(to bottom, black, rgba(0,0,0,0)), url(Images/Platforms/platforms-banner.jpg);
+    background-image:linear-gradient(to bottom, black, rgba(0,0,0,0)), url(../Images/Platforms/platforms-banner.jpg);
     background-position:center;
     background-size:cover;
     background-repeat:no-repeat;

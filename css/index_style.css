@@ -149,7 +149,7 @@ span.release-date {
 	transition:all 0.2s ease-in-out;
 }
 .align-right.street-fighter-bg {
-	background-image: linear-gradient(to right, rgba(0,0,0,0), black), url(Images/Jeux/street-fighter.jpg);
+	background-image: linear-gradient(to right, rgba(0,0,0,0), black), url(../Images/Jeux/street-fighter.jpg);
     background-position: left;
     background-size: 100%;
 	transition:all 0.2s ease-in-out;
@@ -159,18 +159,18 @@ span.release-date {
 	right:50px;
 }
 .game-name-picture.street-fighter {
-	background-image:url(Images/Jeux/Street_Fighter_old_logo.png);
+	background-image:url(../Images/Jeux/Street_Fighter_old_logo.png);
 	background-position:left;
 	background-size:80%;
 }
 .align-left.sonic-bg {
-	background-image:linear-gradient(to right, black, rgba(0,0,0,0)), url(Images/Jeux/sonic-bg.jpg);
+	background-image:linear-gradient(to right, black, rgba(0,0,0,0)), url(../Images/Jeux/sonic-bg.jpg);
 	background-position:right;
 	background-size:100%;
 	transition:all 0.2s ease-in-out;
 }
 .game-name-picture.sonic {
-	background-image:url(Images/Jeux/sonic-logo.png);
+	background-image:url(../Images/Jeux/sonic-logo.png);
 	background-position:left;
 	background-size:contain;
 }
@@ -245,33 +245,33 @@ span.release-date {
 	margin-top:50px!important;
 }
 .platform-container.sega-megadrive {
-	background-image:linear-gradient(rgba(107, 107, 107, 0), rgba(107, 107, 107, 0.5)), url(Images/Platforms/mega-drive.png);
+	background-image:linear-gradient(rgba(107, 107, 107, 0), rgba(107, 107, 107, 0.5)), url(../Images/Platforms/mega-drive.png);
 	background-size:cover;
 	background-repeat:no-repeat;
 }
 .platform-container.nes-classic {
-	background-image:linear-gradient(rgba(107, 107, 107, 0), rgba(107, 107, 107, 0.5)), url(Images/Platforms/nes-classic.jpg);
+	background-image:linear-gradient(rgba(107, 107, 107, 0), rgba(107, 107, 107, 0.5)), url(../Images/Platforms/nes-classic.jpg);
 	background-size:cover;
 	background-repeat:no-repeat;
 }
 .platform-container.dreamcast {
-	background-image:linear-gradient(rgba(107, 107, 107, 0), rgba(107, 107, 107, 0.5)), url(Images/Platforms/dreamcast.jpg);
+	background-image:linear-gradient(rgba(107, 107, 107, 0), rgba(107, 107, 107, 0.5)), url(../Images/Platforms/dreamcast.jpg);
 	background-size:cover;
 	background-repeat:no-repeat;
 }
 .platform-container.nintendo-64 {
-	background-image:linear-gradient(rgba(107, 107, 107, 0), rgba(107, 107, 107, 0.5)), url(Images/Platforms/nintendo-64.png);
+	background-image:linear-gradient(rgba(107, 107, 107, 0), rgba(107, 107, 107, 0.5)), url(../Images/Platforms/nintendo-64.png);
 	background-size:cover;
 	background-repeat:no-repeat;
 }
 .platform-container.arcade {
-	background-image:linear-gradient(rgba(107, 107, 107, 0), rgba(107, 107, 107, 0.5)), url(Images/Platforms/arcade.jpg);
+	background-image:linear-gradient(rgba(107, 107, 107, 0), rgba(107, 107, 107, 0.5)), url(../Images/Platforms/arcade.jpg);
 	background-size:contain;
 	background-repeat:no-repeat;
 	background-position:center;
 }
 .platform-container.super-nintendo {
-	background-image:linear-gradient(rgba(107, 107, 107, 0), rgba(107, 107, 107, 0.5)), url(Images/Platforms/super-nintendo.png);
+	background-image:linear-gradient(rgba(107, 107, 107, 0), rgba(107, 107, 107, 0.5)), url(../Images/Platforms/super-nintendo.png);
 	background-size:cover;
 	background-repeat:no-repeat;
 }
@@ -286,7 +286,7 @@ span.release-date {
 /* ABOUT US */
 .about-us-homepage {
 	height:500px;
-	background-image:linear-gradient(to bottom, black, rgba(0,0,0,0)), url(Images/Autres/about-us-section.jpg);
+	background-image:linear-gradient(to bottom, black, rgba(0,0,0,0)), url(../Images/Autres/about-us-section.jpg);
 	margin-top:150px;
 	display: flex;
     justify-content: center;
@@ -348,15 +348,15 @@ button:hover {
 /* RESPONSIVE */
 @media all and (max-width:960px) and (orientation:portrait) {
 	.align-left.super-mario-bg {
-		background-image:url(Images/Jeux/supermariobros.jpg);
+		background-image:url(../Images/Jeux/supermariobros.jpg);
 		background-size:cover;
 	}
 	.align-left.sonic-bg {
-		background-image:url(Images/Jeux/sonic-bg.jpg);
+		background-image:url(../Images/Jeux/sonic-bg.jpg);
     	background-size: cover;
 	}
 	.align-right.street-fighter-bg {
-		background-image:url(Images/Jeux/street-fighter.jpg);
+		background-image:url(../Images/Jeux/street-fighter.jpg);
 		background-size:cover;
 	}
 	.align-left .game-content-container {
