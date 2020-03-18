@@ -1,37 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-    <title>Retro Invader</title>
-    <meta lang="en">
-    <meta name="about_us" content="Retro Invaders">
-    <meta charset="UTF-8">
-    <meta name="description" content="Retro Invaders helps you to find your favorite retro games">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <link rel="stylesheet" type="text/css" href="css/about_us.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/_header.css" />
-    <link rel="stylesheet" type="text/css" href="css/_footer.css" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700,900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700,900|Roboto:300,400,700,900&display=swap" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <?php include 'includes/_head.html';?>
 </head>
 
   <body>
-    <div id="nav-mobile-container" class="nav-mobile-full no-content">
-            <div class="close-menu-mobile no-content">
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-            <nav class="mobile-nav">
-                    <ul>
-                        <a href="plateformes.html"><li>Platforms</li></a>
-                        <a href="about_us.html"><li>About Us</li></a>
-                        <a href="contact.html"><li>Contact</li></a>
-                    </ul>
-            </nav>
-    </div>
-
     <?php include 'includes/_header.php';?>
 
     <main>
@@ -142,89 +115,6 @@
           </div>
 
           </main>
-    <footer>
-        <section class="items">
-            <article class="hidden">
-                <a href="plateformes.html">
-                    <div>Platforms</div>
-                </a>
-            </article>
-            <article class="hidden">
-                <a href="produits.html">
-                    <div>Products</div>
-                </a>
-            </article>
-            <article class="hidden">
-                <a href="about_us.html">
-                    <div>About Us</div>
-                </a>
-            </article>
-            <article class="hidden">
-                <a href="index.html">
-                    <div class="logo_retro_invaders">
-                        <img class="logo_desktop" alt="logo_retro_invaders_desktop" src="Images/Autres/blog-loco-green.png" height="150" width="auto">
-                    </div>
-                </a>
-            </article>
-            <article class="hidden">
-                <a href="contact.html">
-                    <div>Contact</div>
-                </a>
-            </article>
-            <article>
-                <div>FAQ</div>
-            </article>
-
-            <article>
-                <div>Legal Mentions</div>
-            </article>
-        </section>
-
-        <section class="logo-rs-footer-container">
-            <article>
-                <a href="https://www.instagram.com/?hl=fr">
-                   <img class="logo_instagram" alt="logo_instagram" src="Images/Autres/instagram-green.png" height="40" width="auto">
-                </a>
-            </article>
-            
-            <article>
-                <a href="https://twitter.com/?lang=fr">
-                    <img alt="logo_twitter" src="Images/Autres/twitter-green.png" height="40" width="auto">
-                </a>
-            </article>
-
-            <article>
-                <a href="https://fr-fr.facebook.com/">
-                    <img alt="logo_facebook" src="Images/Autres/facebook-green.png" height="40" width="auto">
-                </a>
-            </article>
-
-            <article>
-                <a href="https://www.pinterest.fr/">
-                    <img alt="logo_pinterest" src="Images/Autres/pinterest-green.png" height="40" width="auto">
-                </a>
-            </article>
-
-        </section>
-    </footer>
-        
-        <script type="text/javascript">
-        jQuery(function(){
-          var div = jQuery("#burger-menu-click"), div = jQuery("#nav-mobile-container"), div = jQuery(".close-menu-mobile");
-          jQuery("#burger-menu-click").click(function(){
-            jQuery("#burger-menu-click").toggleClass ("no-content");
-            jQuery("#nav-mobile-container").toggleClass ("no-content");
-            jQuery(".close-menu-mobile").toggleClass ("no-content");
-          });     
-          jQuery(".close-menu-mobile").click(function(){
-            jQuery("#burger-menu-click").toggleClass ("no-content");
-            jQuery("#nav-mobile-container").toggleClass ("no-content");
-            jQuery(".close-menu-mobile").toggleClass ("no-content");
-          });   
-      });
-        </script>
-          
-          
-      </div>
+    <?php require_once 'includes/_footer.html' ?>
   </body>
 </html>
