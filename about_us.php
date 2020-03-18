@@ -4,53 +4,7 @@
     <?php require_once 'includes/_head_about_us.html';?>
   </head>
   <body>
-
-    <div id="nav-mobile-container" class="nav-mobile-full no-content">
-            <div class="close-menu-mobile no-content">
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-            <nav class="mobile-nav">
-                    <ul>
-                        <a href="plateformes.html"><li>Platforms</li></a>
-                        <a href="about_us.php"><li>About Us</li></a>
-                        <a href="contact.html"><li>Contact</li></a>
-                    </ul>
-            </nav>
-
-        </div>
-
-        <header>
-        <section class="logo">
-            <a href="index.html">
-                <img class ="logo_smartphone" alt="logo_retro_invaders_smartphone" src="https://raw.githubusercontent.com/WildCodeSchool/lyon-0320-golden-retro/dev/Images/Autres/blog-loco-green.png" height="110" width="auto">
-                <div class="logo-header"></div>
-            </a>
-
-        </section>
-
-        <section class="menu_burger_container">
-            <article id="burger-menu-click" class="menu_burger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-
-            </article>
-        </section>
-
-        <nav>
-            <ul>
-                <li><a href="plateformes.html">Platforms</a></li>
-                <li><a href="about_us.php">About Us</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-
-
-
-
-
-    </header>
+    <?php require_once 'includes/_header.html';?>
       <main>
     <section class="about-us-banner">
       <h1>Meet the team</h1>
