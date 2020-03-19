@@ -1,0 +1,15 @@
+ divClassName,platformeName,gameName,gamePageLink,classNameHref,seeMore
+ bloc super-mario-bros-2-container,NES,Super Mario Bros,Games/super-mario-bros.html,button button-on-hover,See More
+ bloc super-mario-bros-2-container,NES,Super Mario Bros,Games/super-mario-bros.html,button button-on-hover,See More
+ bloc street-fighter-container,Arcade,Street Fighter,Games/street-fighter-2.html,button button-on-hover,See More
+ bloc sonic-the-hedgehog-2-container,Genesis,Sonic The Hedgehog 2,Games/sonic-the-hedgehog-2.html,button button-on-hover,See More
+ bloc tloz-alttp-container,Super Nintendo,TLoZ A Link To The Past,Games/a-link-to-the-past.html,button button-on-hover,See More
+ bloc tloz-oot-container,Nintendo 64,TLoZ Ocarina of Time,Games/ocarina-of-time.html,button button-on-hover,See More
+ bloc tloz-mm-container,Nintendo 64,TLoZ Majora's Mask,Games/majora-mask.html,button button-on-hover,See More
+ bloc aladdin-container,Super Nintendo,Disney's Aladdin,Games/aladdin.html,button button-on-hover,See More
+ bloc altered-beast-container,Genesis,Altered Beast,Games/altered-beast.html,button button-on-hover,See More
+ bloc kirby-dreamland-container,Super Nintendo,Kirby's Dreamland,Games/kirby-dreamland.html,button button-on-hover,See More
+ bloc lion-king-container,Super Nintendo,Disney's The Lion King,#,button button-on-hover,See More
+ bloc metal-slug-container,Arcade,Metal Slug,Games/metal-slug.html,button button-on-hover,See More
+ bloc super-mario-64-container,Nintendo 64,Super Mario 64,Games/super-mario-64.html,button button-on-hover,See More
+ bloc virtual-tennis-container,Dreamcast,Virtual Tennis,Games/virtual-tennis.html,button button-on-hover,See More
