@@ -37,7 +37,7 @@
 
 	<header>
         <section class="logo">
-            <a href="index.html">
+            <a href="index.php">
                 <img class ="logo_smartphone" alt="logo_retro_invaders_smartphone" src="Images/Autres/blog-loco-green.png" height="110" width="auto">
                 <div class="logo-header"></div>
             </a>
@@ -160,7 +160,7 @@
 					</div>
 				</a>
 
-				<a href="Platforms/arcade.html">
+				<a href="plateformes.php?platformFilter=<?php echo 'Arcade'; ?>">
 					<div class="platform-container arcade">
 						<span class="number-of-games">2 JEUX</span>
 						<h3>Arcade</h3>
@@ -222,7 +222,7 @@
                 </a>
             </article>
             <article class="hidden">
-                <a href="index.html">
+                <a href="index.php">
                     <div class="logo_retro_invaders">
                         <img class="logo_desktop" alt="logo_retro_invaders_desktop" src="Images/Autres/blog-loco-green.png" height="150" width="auto">
                     </div>

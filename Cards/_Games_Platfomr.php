@@ -1,14 +1,26 @@
 <?php
 $csv = array_map('str_getcsv', file('data/games.csv'));
-for($i =1 ;$i < count($csv) ;$i++ ){ ?>
 
-    <div class="<?php echo  $csv[$i][0] ?>" >
-        <span><?php echo  $csv[$i][1] ?>"</span>
-        <h3><?php echo  $csv[$i][2] ?>"</h3>
-        <a href="<?php echo  $csv[$i][3] ?>" class="<?php echo  $csv[$i][4] ?>"><?php echo  $csv[$i][5] ?></a>
-    </div>
+for($i =1 ;$i < count($csv) ;$i++ ){
 
-<?php } ?>
+    if($val==='vide') {
+       ?>
+        <div class="<?php echo $csv[$i][0] ?>">
+            <span><?php echo $csv[$i][1] ?>"</span>
+            <h3><?php echo $csv[$i][2] ?>"</h3>
+            <a href="<?php echo $csv[$i][3] ?>" class="<?php echo $csv[$i][4] ?>"><?php echo $csv[$i][5] ?></a>
+        </div>
+
+        <?php
+    }else if($val===$csv[$i][1]){ ?>
+        <div class="<?php echo $csv[$i][0] ?>">
+            <span><?php echo $csv[$i][1] ?>"</span>
+            <h3><?php echo $csv[$i][2] ?>"</h3>
+            <a href="<?php echo $csv[$i][3] ?>" class="<?php echo $csv[$i][4] ?>"><?php echo $csv[$i][5] ?></a>
+        </div>
+<?php
+    }
+} ?>
 
 <!--
 <div class="bloc super-mario-bros-2-container"><span>NES</span><h3>Super Mario Bros</h3><a href="Games/super-mario-bros.html" class="button button-on-hover">See More</a></div>

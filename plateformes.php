@@ -20,51 +20,37 @@
             <nav class="nav-platforms">
                 <h2>Select your platform</h2>
                 <div class="nav-platforms-links-container">
-                   <!-- <a href="house.php?id=<?php echo $house_id;?>">
-                        <?php echo $house_name;?>
-                    </a>-->
-                    <h2>
-                        <?php
-                        if(isset($_GET['platformFilter']))
-                        {
-
-                            $val=$_GET['platformFilter'];
-                            echo "platformfilter detected " . $val;
-
-                        }esle
-                        {
-                            echo "platformfilter detected " . $val;
-
-                        }
-                        ?>
-                        <a href="plateformes.php?id=<php?platformFilter=<?php echo 'Genesis'; ?>">Genesis</a>
-
-
-
-                    </h2>
-                    <h2><a href="Platforms/genesis.html">Genesis</a></h2>
-                    <h2><a href="Platforms/nes-classic.html">NES Classic</a></h2>
-                    <h2><a href="Platforms/dreamcast.html">Dreamcast</a></h2>
-                    <h2><a href="Platforms/nintendo-64.html">Nintendo 64</a></h2>
-                    <h2><a href="Platforms/arcade.html">Arcade</a></h2>
-                    <h2><a href="Platforms/super-nintendo.html">Super Nintendo</a></h2>
+                    <h2><a href="plateformes.php?platformFilter=<?php echo 'vide'; ?>">Toutes plateformes</a></h2>
+                    <h2><a href="plateformes.php?platformFilter=<?php echo 'Genesis'; ?>">Genesis</a></h2>
+                    <h2><a href="plateformes.php?platformFilter=<?php echo 'NES'; ?>">NES Classic</a></h2>
+                    <h2><a href="plateformes.php?platformFilter=<?php echo 'Dreamcast'; ?>">Dreamcast</a></h2>
+                    <h2><a href="plateformes.php?platformFilter=<?php echo 'Nintendo 64'; ?>">Nintendo 64</a></h2>
+                    <h2><a href="plateformes.php?platformFilter=<?php echo 'Arcade'; ?>">Arcade</a></h2>
+                    <h2><a href="plateformes.php?platformFilter=<?php echo 'Super Nintendo'; ?>">Super Nintendo</a></h2>
                 </div>
-
             </nav>
-
             <section>
 
                 <div class="bloc-container">
-                        <div class="bloc super-mario-bros-2-container"><span>NES</span><h3>Super Mario Bros</h3><a href="Games/super-mario-bros.html" class="button button-on-hover">See More</a></div>
-                        <?php require 'Cards/_Games_Platfomr.php'; ?>
+                    <?php
+                    if(isset($_GET['platformFilter'])){
+                        $val=$_GET['platformFilter'];
+                    //echo "platform filter detected " . $val;
+                    }else {
+                        $val="vide";
+                    }
+
+                    require 'Cards/_Games_Platfomr.php'; ?>
+
                 </div>
 
             </div>
     </main>
+        <footer>
+            <?php require 'includes/_footer.html' ?>
+        </footer>
 
-        <?php require 'includes/_footer.html' ?>
-</main>
-        
+
         <?php require 'includes/_burger_menu_click.js'; ?>
     
 </body>
