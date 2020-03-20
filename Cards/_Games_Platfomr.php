@@ -1,5 +1,13 @@
 <?php
-$csv = array_map('str_getcsv', file('data/games.csv'));
+$val =  $_COOKIE['filterPlatformName'];
+
+if (file_exists('data/games.csv')) {
+    $csv = array_map('str_getcsv', file('data/games.csv'));
+    //echo "Le fichier $filename existe.";
+} else {
+    $csv = array_map('str_getcsv', file('../data/games.csv'));
+    //echo "Le fichier $filename n'existe pas.";
+}
 
 for($i =1 ;$i < count($csv) ;$i++ ){
 
