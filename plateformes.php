@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <?php require 'includes/_head_platform.html'; ?>
-    <title>Plateforms</title>
+   <?php require 'includes/_head_fusion.html'; ?>
+   <title>Plateforms</title>
 </head>
 <body>
         <?php require 'includes/_header.html'; ?>
@@ -21,7 +21,7 @@
                 <h2>Select your platform</h2>
                 <div class="nav-platforms-links-container">
                     <h2><a href="#" onclick="reloadPArtPage('vide');return false;">Toutes plateformes</a></h2>
-                    <h2><a href="#" onclick="reloadPArtPage('Genesis');return false;">Genesis</a>
+                    <h2><a href="#" onclick="reloadPArtPage('Genesis');return false;">Genesis</a></h2>
                     <h2><a href="#" onclick="reloadPArtPage('NES');return false;">NES Classic</a></h2>
                     <h2><a href="#" onclick="reloadPArtPage('Dreamcast');return false;">Dreamcast</a></h2>
                     <h2><a href="#" onclick="reloadPArtPage('Nintendo 64');return false;">Nintendo 64</a></h2>
@@ -57,7 +57,7 @@
                 }
         </script>
 
-        <?php require 'includes/_burger_menu_click.js'; ?>
+        <?php require 'js/_burger_menu_click.js'; ?>
 
     
 </body>

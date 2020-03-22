@@ -1,7 +1,7 @@
 
 <html lang="en">
 <head>
-    <?php require "includes/_head_contact_us.html" ?>
+    <?php require "includes/_head_fusion.html"; ?>
 </head>
 
 <body>

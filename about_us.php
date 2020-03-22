@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Call  a php page who is contain head code about us TODO : _head_xxxxxxxxx fusion  -->
-    <?php require_once 'includes/_head_about_us.html'; ?>
+    <!-- Call  a php page who is contain head code about us  -->
+    <?php require_once 'includes/_head_fusion.html'; ?>
+    <title>About Us pager</title>
 </head>
 <body>
 <?php require_once 'includes/_header.html'; ?>
