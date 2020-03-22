@@ -1,11 +1,7 @@
-<html lang="en">
-<head>
-    <?php require "includes/_head_fusion.html"; ?>
-</head>
-
-<body>
-
-<?php require "includes/_header.html" ?>
+<?php
+$title = "Page contact" ;
+require 'includes/_header.php';
+?>
 
 <main>
 
@@ -20,17 +16,18 @@
     </section>
     <div class="middle">
 
-        <div class="form">
+        <div class="form" >
             <h2>Get in Touch !</h2>
-            <form action="#" method="post">
+            <form action="form_informations.php" method="post">
                 <label for="name"></label>
                 <input type="text" id="name" name="user_name" placeholder="Name">
                 <label for="mail"></label>
                 <input type="email" id="mail" name="user_mail" placeholder="Mail">
                 <label for="msg"></label>
                 <textarea id="msg" name="user_message" placeholder="Message"></textarea>
+                <button type="submit" class="button">Send</button>
             </form>
-            <button type="submit" class="button">Send</button>
+
         </div>
         <div class="contact">
             <div class="mail">
@@ -61,12 +58,7 @@
         </div>
     </div>
 
-    <!-- lien vers le FOOTER -->
-    <?php require "includes/_footer.html" ?>
+
 </main>
 
-<?php require "js/_burger_menu_click.js" ?>
-
-</body>
-
-</html>
+<?php require "includes/_footer.php" ?>

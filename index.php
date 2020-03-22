@@ -1,13 +1,8 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<title>Retro Invader</title>
-	<?php require "includes/_head_fusion.html"; ?>
-</head>
-
-<body>
-
-	<?php require 'includes/_header.html'; ?>
+<?php
+require 'includes/_header.php';
+$title = "Page acceuil" ;
+?>
 
 	<main>
 		<section class="banner-homepage">
@@ -16,15 +11,11 @@
 				<h2>Play your favorite retro games</h2>
 				<p>Retro Invader helps you to get your favorite retro games and to have all the informations about prices evolution.</p>
 			</div>
-
 		</section>
-
 		<section class="pick-game-homepage">
-
 			<div class="heading-with-background">
 				<h2>Pick a game!</h2>
 			</div>
-
 			<section class="align-left super-mario-bg">
 				<div class="game-content-container">
 					<div class="game-name-picture super-mario-bros"></div>
@@ -135,26 +126,8 @@
 
 		</section>
 
-		<section class="contact-homepage">
 
-			<div class="heading-with-background">
-				<h2>Any questions?</h2>
-			</div>
 
-			<input class="first-form-element" type="text" placeholder="Name">
-			<input type="text" placeholder="Email Address">
-			<input type="dropdown" placeholder="How can we help?">
-			<textarea placeholder="Anything else?"></textarea>
-
-			<button type="submit">SUBMIT</button>
-
-		</section>
-
-        <?php require "includes/_footer.html" ?>
 </main>
 
-    // script js pour le menu burger
-    <?php require 'js/_burger_menu_click.js'; ?>
-
-</body>
-</html>
+<?php require "includes/_footer.php" ?>

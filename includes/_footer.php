@@ -1,3 +1,5 @@
+
+
 <footer>
     <section class="items">
         <article class="hidden">
@@ -67,3 +69,13 @@
 
     </section>
 </footer>
+
+
+<?php
+require 'js/_burger_menu_click.js';
+require  'js/_reload_Part_Page_On_Click.js';
+?>
+
+
+</body>
+</html>
