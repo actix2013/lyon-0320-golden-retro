@@ -1,22 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
 
-    <head>
-    <title>Retro Invader</title>
-    <meta lang="en">
-    <meta name="title" content="Retro Invaders">
-    <meta charset="UTF-8">
-    <meta name="description" content="Retro Invaders helps you to find your favorite retro games">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <link rel="stylesheet" type="text/css" href="css/contact_style.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700,900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700,900|Roboto:300,400,700,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/header_style.css" />
-    <link rel="stylesheet" type="text/css" href="src/_footer.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=VT323&display=swap" rel="stylesheet">
-    <link rel='stylesheet' id='thb-self-hosted-1-css' href="gilroy/gilroy.css">
+<html lang="en">
+<head>
+    <?php require
 </head>
 
 <body>
@@ -30,7 +15,7 @@
                     <ul>
                         <a href="plateformes.php"><li>Platforms</li></a>
                         <a href="about_us.php"><li>About Us</li></a>
-                        <a href="contact.html"><li>Contact</li></a>
+                        <a href="contact.php"><li>Contact</li></a>
                     </ul>
             </nav>
 
@@ -58,7 +43,7 @@
             <ul>
                 <li><a href="plateformes.php">Platforms</a></li>
                 <li><a href="about_us.php">About Us</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="contact.php">Contact</a></li>
             </ul>
         </nav>
 
@@ -156,7 +141,7 @@
                 </a>
             </article>
             <article class="hidden">
-                <a href="contact.html">
+                <a href="contact.php">
                     <div>Contact</div>
                 </a>
             </article>
