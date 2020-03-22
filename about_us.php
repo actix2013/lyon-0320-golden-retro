@@ -22,9 +22,6 @@
     <?php require_once 'includes/_footer.html'; ?>
 </footer>
 
-<?php require_once 'includes/_burger_menu_click.js'; ?>
-
-
-</div>
+<?php require_once 'js/_burger_menu_click.js'; ?>
 </body>
 </html>
