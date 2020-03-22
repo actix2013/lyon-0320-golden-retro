@@ -6,48 +6,7 @@
 
 <body>
 
-    <div id="nav-mobile-container" class="nav-mobile-full no-content">
-            <div class="close-menu-mobile no-content">
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-            <nav class="mobile-nav">
-                    <ul>
-                        <a href="plateformes.php"><li>Platforms</li></a>
-                        <a href="about_us.php"><li>About Us</li></a>
-                        <a href="contact.php"><li>Contact</li></a>
-                    </ul>
-            </nav>
-
-        </div>
-
-    <header>
-        <section class="logo">
-            <a href="index.php">
-                <img class ="logo_smartphone" alt="logo_retro_invaders_smartphone" src="https://raw.githubusercontent.com/WildCodeSchool/lyon-0320-golden-retro/dev/Images/Autres/blog-loco-green.png" height="110" width="auto">
-                <div class="logo-header"></div>
-            </a>
-
-        </section>
-
-        <section class="menu_burger_container">
-            <article id="burger-menu-click" class="menu_burger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-
-            </article>
-        </section>
-
-        <nav>
-            <ul>
-                <li><a href="plateformes.php">Platforms</a></li>
-                <li><a href="about_us.php">About Us</a></li>
-                <li><a href="contact.php">Contact</a></li>
-            </ul>
-        </nav>
-
-    </header>
+    <?php require "includes/_header.html" ?>
 
     <main>
 
@@ -79,9 +38,7 @@
 
             </form>
                 <button type="submit" class="button">Send</button>
-
         </div>
-
         <div class="contact">
             <div class="mail">
 
@@ -109,32 +66,16 @@
                     <i class="fa fa-map" aria-hidden="true">
                         Bowser Castle <i class="fa fa-heart" aria-hidden="true"></i>
                     </i>
-
                 </div>
-            </div>
-            </div>
             </div>
         </div>
     </div>
 
+        <!-- lien vers le FOOTER -->
+        <?php require "includes/_footer.html" ?>
 </main>
         
-        <script type="text/javascript">
-        jQuery(function(){
-            var div = jQuery("#burger-menu-click"), div = jQuery("#nav-mobile-container"), div = jQuery(".close-menu-mobile");
-            jQuery("#burger-menu-click").click(function(){
-                jQuery("#burger-menu-click").toggleClass ("no-content");
-                jQuery("#nav-mobile-container").toggleClass ("no-content");
-                jQuery(".close-menu-mobile").toggleClass ("no-content");
-            });     
-            jQuery(".close-menu-mobile").click(function(){
-                jQuery("#burger-menu-click").toggleClass ("no-content");
-                jQuery("#nav-mobile-container").toggleClass ("no-content");
-                jQuery(".close-menu-mobile").toggleClass ("no-content");
-            });   
-        });
-        </script>
-
+        <?php require "js/_burger_menu_click.js" ?>
 
 </body>
 

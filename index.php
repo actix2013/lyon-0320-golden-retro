@@ -222,7 +222,7 @@
 </main>
 
     // script js pour le menu burger
-    <?php require  'includes/_burger_menu_click.js'; ?>
+    <?php require 'includes/_burger_menu_click.js'; ?>
 
 </body>
 </html>
