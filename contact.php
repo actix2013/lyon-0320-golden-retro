@@ -72,14 +72,14 @@ function isFormValid(bool $DEBUG): bool
 
 /*
  * Ecrit dans la database ( est appeller si  le controle champ  valide est ok )
- */
+ *//*
 function writteOnDatabase(): bool
 {
     try {
         global $email;
         global $firstName;
         $pdo = new PDO(DSN, USER, PASS);
-        $query = "INSERT INTO friend (firstname, email) VALUES ('$firstName','$email' )";
+        $query = 'INSERT INTO retro_invader.contact_messages (name, message, email, dateOfCeation, state)';
         $statement = $pdo->exec($query);
         if (!$statement) {
             echo $firstName . " Erreur enregistrement database :" . $email;
@@ -94,7 +94,7 @@ function writteOnDatabase(): bool
         return $statement;
     }
     return $statement;
-}
+}*/
 
 /*
  * Ecrit dans la database avec prepation pour controle antiinjection
@@ -105,15 +105,17 @@ function writteOnDatabaseWithPrepare(bool $DEBUG)
         global $email;
         global $firstName;
         global $message;
+        $state="New";
         $pdo = new PDO(DSN, USER, PASS);
-        $query = "INSERT INTO contact_messages ( message,  email) VALUES ( :messageP, :emailP)";
+        $query = "INSERT INTO retro_invader.contact_messages(name, message,  email, state) VALUES (:nameP, :messageP, :emailP, :stateP)";
         $statement = $pdo->prepare($query);
-        if(!$statement){
-            //$statement->bindValue(":firstNameP", $firstName, PDO::PARAM_STR);
+        if($statement){
+            $statement->bindValue(":nameP", $firstName, PDO::PARAM_STR);
             $statement->bindValue(":emailP", $email, PDO::PARAM_STR);
             $statement->bindValue(":messageP", $message, PDO::PARAM_STR);
+            $statement->bindValue(":stateP", $state, PDO::PARAM_STR);
             $statement->execute();
-            $statement->close();
+
 
             /* pour remise a 0 des variables si pas de redirection vers success , evite 2 x le meme user si actualisation*/
             $_POST = array();
@@ -141,13 +143,13 @@ function getMessageOnDatabase(): array
 {
 
     $pdointerne = new PDO(DSN, USER, PASS);
-    $queryinterne = "SELECT * FROM contact_messages";
+    $queryinterne = "SELECT * FROM retro_invader.contact_messages";
     $statementinterne = $pdointerne->query($queryinterne);
     $friendsinterne = $statementinterne->fetchAll(PDO::FETCH_CLASS);
     return $friendsinterne;
 }
 $messageList=getMessageOnDatabase();
-//$friends = getMessageOnDatabase();
+
 ?>
     <main>
 
@@ -201,14 +203,26 @@ $messageList=getMessageOnDatabase();
                     <ul class="list-group">
                         <?php for ($i = 0; $i < count($messageList); $i++) {
                             $obj = $messageList[$i];
-                            if($obj->state == "Terminer"){
-                                $classList="list-group-item list-group-item-success";
-                            }else {
-                                $classList="list-group-item list-group-item-warning";
+                            switch ($obj->state){
+                                case "Terminer":
+                                    $classList="list-group-item list-group-item-success";
+                                    break;
+                                case "Traitement en cour":
+                                    $classList="list-group-item list-group-item-warning";
+                                    break;
+                                case "New":
+                                    $classList="list-group-item list-group-item-info";
+                                    break;
+                                Default :
+                                    $classList="list-group-item list-group-item-secondary";
+                                    break;
+
+
                             }
+
                             ?>
                             <li class="<?php echo $classList?>">
-                                <?php echo "Message de  " . $obj->name . " daté du " . $obj->dateOfCeation . " Etat en cours : " . $obj->state . "<br>"; ?>
+                                <?php echo "Message from  " . $obj->name . ". Sending date :" . $obj->dateOfCeation . " State : " . $obj->state . "<br>"; ?>
                             </li>
                         <?php } ?>
                     </ul>
