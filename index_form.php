@@ -1,12 +1,9 @@
 <?php
-$title = "Page contact" ;
-require 'includes/_header.php';
-require "sql/connect.php";
+require_once "connect.php";
 
 $errors = [];
 $firstName = "";
-$email = "";
-$message = "";
+$lastName = "";
 $formAlredySend = isset($_POST['submit']);
 
 // Traitement global , appel des fonctions
@@ -28,7 +25,7 @@ function isFormValid():bool {
     global $firstName;
     global $errors;
     $firstName = trim($_POST['firstName']);
-    $email = trim($_POST['email']);
+    $email = trim($_POST['lastName']);
     $error=true;
 
     if(empty($firstName)){
@@ -42,12 +39,12 @@ function isFormValid():bool {
     }
 
     if(empty($email)){
-        // echo PHP_EOL ."******************** Detection last name empty  <br>" . PHP_EOL;
-        $errors['email'] = "Merci de remplir le champ prenom";
+       // echo PHP_EOL ."******************** Detection last name empty  <br>" . PHP_EOL;
+        $errors['lastName'] = "Merci de remplir le champ prenom";
         $error=false;
     }elseif (strlen($email)>45){
         //echo PHP_EOL ."******************** Detection last name trop grand <br>" . PHP_EOL;
-        $errors['email'] = "Le champ non est trop long , il doit etre inférieur a 45 lettres.";
+        $errors['lastName'] = "Le champ non est trop long , il doit etre inférieur a 45 lettres.";
         $error=false;
     }
     return $error;
@@ -61,7 +58,7 @@ function writteOnDatabase() : bool{
         global $email;
         global $firstName;
         $pdo = new PDO(DSN, USER, PASS);
-        $query = "INSERT INTO friend (firstname, email) VALUES ('$firstName','$email' )";
+        $query = "INSERT INTO friend (firstname, lastname) VALUES ('$firstName','$email' )";
         $statement = $pdo->exec($query);
         if(!$statement) {
             echo $firstName. " Erreur enregistrement database :". $email;
@@ -88,10 +85,10 @@ function writteOnDatabaseWithPrepare(){
         global $email;
         global $firstName;
         $pdo = new PDO(DSN, USER, PASS);
-        $query = 'INSERT INTO friend (firstname, email) VALUES (:firstNameP,:emailP )';
+        $query = 'INSERT INTO friend (firstname, lastname) VALUES (:firstNameP,:lastNameP )';
         $statement = $pdo->prepare($query);
         $statement->bindValue(":firstNameP",$firstName,PDO::PARAM_STR);
-        $statement->bindValue(":emailP",$email,PDO::PARAM_STR);
+        $statement->bindValue(":lastNameP",$email,PDO::PARAM_STR);
         $statement->execute();
     }catch (PDOException $e){
         print "Erreur !: " . $e->getMessage() . "<br/>";
@@ -102,60 +99,59 @@ function writteOnDatabaseWithPrepare(){
     /* pour remise a 0 des variables si pas de redirection vers success , evite 2 x le meme user si actualisation
     $_POST = array();
     $firstName = "";
-    $email = ""; */
+    $lastName = ""; */
 
 }
 
-function getMessageOnDatabase () : array {
+function getValueFriends () : array {
 
     $pdointerne = new PDO(DSN, USER, PASS);
-    $queryinterne = "SELECT * FROM contact_messages";
+    $queryinterne = "SELECT * FROM friend";
     $statementinterne = $pdointerne->query($queryinterne);
     $friendsinterne = $statementinterne->fetchAll(PDO::FETCH_CLASS);
     //var_dump($friendsinterne);
     return $friendsinterne;
 }
 $friends = getMessageOnDatabase();
+
+// contien le header  + style bootstrap
+require_once "_header.php";
+
 ?>
-    <main>
 
-    <section class="banner-contact">
+<div class="container">
+    <ul>
+        <?php for ($i = 0; $i < count($friends); $i++) {
+            $obj = $friends[$i];
+            ?>
+            <li><?php echo $obj->firstname ." " . $obj->lastname; ?></li>
+        <?php } ?>
+    </ul>
 
-        <div class="contact-banner-content-container">
-            <h2>Feel free to contact us</h2>
-            <p>You have any questions about our website, our games cotation or want to submit a game? Please feel free
-                to send us a message, we'll do our best to answer your question as quick as possible.</p>
-        </div>
+    <div class="container">
 
-    </section>
-    <div class="middle">
-
-        <div class="form" >
-            <h2>Get in Touch !</h2>
-            <form action="form_informations.php" method="post">
-                <label for="name"></label>
-                <input type="text" id="name" name="user_name" placeholder="Name">
-                <label for="mail"></label>
-                <input type="email" id="mail" name="user_mail" placeholder="Mail">
-                <label for="msg"></label>
-                <textarea id="msg" name="message" placeholder="Message"></textarea>
-                <button type="submit" class="button">Send</button>
-            </form>
-
-        </div>
-        <div class="contact">
-            <div class="mail">
-                <h5>Mail</h5>
-                <div>
-                    <i class="fa fa-envelope" aria-hidden="true">
-                        Contact@retro-golden.fr
-                    </i>
-                </div>
+        <h1>Engregistrer un utilisateur : </h1>
+        <form action="index.php" method="POST" enctype="application/x-www-form-urlencoded">
+            <div class="form-group">
+                <label for="inputName">Nom :</label>
+                <input type="text" class="form-control" id="inputName" name="firstName" value=<?= $firstName ?>>
+                <?php if (isset($errors['firstName'])) { ?>
+                    <small id="firstNameHelp" class="form-text text-error">
+                        <?php echo $errors['firstName'] ?>
+                    </small>
+                <?php } ?>
             </div>
-        </div>
+            <div class="form-group">
+                <label for="lastName">Prénom :</label>
+                <input type="text" class="form-control" id="lastName" name="lastName" value=<?= $lastName ?>>
+                <?php if (isset($errors['lastName'])) { ?>
+                    <small id="lastNameHelp" class="form-text text-error">
+                        <?php echo $errors['lastName'] ?>
+                    </small>
+                <?php } ?>
+            </div>
+            <button name="submit" type="submit" class="btn btn-primary">Enregistrer l'utilisateur</button>
+        </form>
     </div>
 
-
-</main>
-
-<?php require "includes/_footer.php" ?>
+<?php require_once "_footer.php" ?>
