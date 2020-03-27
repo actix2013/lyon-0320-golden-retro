@@ -138,6 +138,9 @@ input,textarea{
     border:1px solid #52ae32;
     color:#52ae32;
 }
+.text-error {
+    color: red;
+}
 
 /****MEDIA QUERIE FOR MOBILE****/
 
