@@ -2,7 +2,7 @@
 $title = "Page contact";
 require 'includes/_header.php';
 require "sql/connect.php";
-$DEBUG = true;
+$DEBUG = false;
 $errors = [];
 $firstName = "";
 $email = "";
@@ -11,10 +11,10 @@ $formAlredySend = isset($_POST['submit']);
 
 // Traitement global , appel des fonctions
 if ($formAlredySend) {
-    $valid = isFormValid($DEBUG);
+    $valid = isFormValid($DEBUG,$firstName,$email,$message,$errors);
     if ($valid) {
         //writteOnDatabase();
-        writteOnDatabaseWithPrepare($DEBUG);
+        writteOnDatabaseWithPrepare($DEBUG,$email,$firstName,$message);
     }
 
 }
@@ -26,21 +26,19 @@ if ($formAlredySend) {
  * Global var used : one for each value of form.
  * Global  var $errors used and updated  with  detected errors
  */
-function isFormValid(bool $DEBUG): bool
+function isFormValid(bool $DEBUG , string &$firstName, string &$email , string &$message , array &$errors): bool
 {
-    global $email;
-    global $firstName;
-    global $message;
-    global $errors;
-    $firstName = trim( $_POST['firstName']);
-    var_dump($firstName);
+    $firstName= trim( $_POST['firstName']);
     $email = $_POST['email'];
     $message = $_POST['message'];
     $noError = true;
 
+    if($DEBUG)var_dump($firstName);
+
+
     // controle de conformité pour fisrtname
     if (empty($firstName)) {
-        echo PHP_EOL ."******************** Detection first name est empty <br>" . PHP_EOL;
+        if($DEBUG)echo PHP_EOL ."******************** Detection first name est empty <br>" . PHP_EOL;
         $errors['firstName'] = "Merci de remplir le champ nom";
         $noError = false;
     } elseif (strlen($firstName) > 45) {
@@ -70,41 +68,13 @@ function isFormValid(bool $DEBUG): bool
     return $noError;
 }
 
-/*
- * Ecrit dans la database ( est appeller si  le controle champ  valide est ok )
- *//*
-function writteOnDatabase(): bool
-{
-    try {
-        global $email;
-        global $firstName;
-        $pdo = new PDO(DSN, USER, PASS);
-        $query = 'INSERT INTO retro_invader.contact_messages (name, message, email, dateOfCeation, state)';
-        $statement = $pdo->exec($query);
-        if (!$statement) {
-            echo $firstName . " Erreur enregistrement database :" . $email;
-            echo("Errormessage: " . mysqli_error());
-        } else {
-            $_POST = array();
-            $firstName = "";
-            $email = "";
-        }
-    } catch (PDOException $e) {
-        print "Erreur !: " . $e->getMessage() . "<br/>";
-        return $statement;
-    }
-    return $statement;
-}*/
 
 /*
  * Ecrit dans la database avec prepation pour controle antiinjection
  */
-function writteOnDatabaseWithPrepare(bool $DEBUG)
+function writteOnDatabaseWithPrepare(bool $DEBUG, string &$email, string &$firstName , string &$message )
 {
     try {
-        global $email;
-        global $firstName;
-        global $message;
         $state="New";
         $pdo = new PDO(DSN, USER, PASS);
         $query = "INSERT INTO retro_invader.contact_messages(name, message,  email, state) VALUES (:nameP, :messageP, :emailP, :stateP)";
@@ -115,8 +85,6 @@ function writteOnDatabaseWithPrepare(bool $DEBUG)
             $statement->bindValue(":messageP", $message, PDO::PARAM_STR);
             $statement->bindValue(":stateP", $state, PDO::PARAM_STR);
             $statement->execute();
-
-
             /* pour remise a 0 des variables si pas de redirection vers success , evite 2 x le meme user si actualisation*/
             $_POST = array();
             $firstName = "";
@@ -130,18 +98,13 @@ function writteOnDatabaseWithPrepare(bool $DEBUG)
 
     } catch (PDOException $e) {
         print "Erreur !: " . $e->getMessage() . "<br/>";
-
     }
     $resultat = "Bravo  ," . $firstName . " " . $email . " tu est maintenant mon amis et a été enregistré dans ma base.";
     //header('Location: /success.php?message=' . $message);
-
-
-
 }
 
 function getMessageOnDatabase(): array
 {
-
     $pdointerne = new PDO(DSN, USER, PASS);
     $queryinterne = "SELECT * FROM retro_invader.contact_messages";
     $statementinterne = $pdointerne->query($queryinterne);
@@ -172,24 +135,29 @@ $messageList=getMessageOnDatabase();
                         <label for="firstName"></label>
                         <input type="text" id="firstName" name="firstName" placeholder="non , prenom , pseudo"
                                value=<?= $firstName ?>>
-                        <?php if (isset($errors['firstName'])) { ?>
+                        <?php if (isset($errors['firstName'])) $helpName=$errors['firstName']; else  $helpName=" "; ?>
                             <small id="firstNameHelp" class="form-text text-error">
-                                <?php echo $errors['firstName'] ?>
+                                <?php echo $helpName; ?>
                             </small>
-                        <?php } ?>
+
                     </div>
                     <div class="form-group">
                         <label for="email"></label>
                         <input type="email" id="email" name="email" placeholder="Mail" value=<?= $email ?>>
-                        <?php if (isset($errors['email'])) { ?>
+                        <?php if (isset($errors['email'])) { $helpEmail=$errors['email'];}else{$helpEmail=" ";} ?>
                             <small id="emailHelp" class="form-text text-error">
-                                <?php echo $errors['email'] ?>
+                                <?php echo $helpEmail; ?>
                             </small>
-                        <?php } ?>
+
                     </div>
                     <div class="form-group">
                         <label for="msg"></label>
                         <textarea id="msg" name="message" placeholder="Message"><?= $message ?></textarea>
+                        <?php if (isset($errors['message']))  { $helpMessage=$errors['message'];}else{$helpMessage=" ";} ?>
+                            <small id="messageHelp" class="form-text text-error">
+                                <?php echo $helpMessage; ?>
+                            </small>
+
                     </div>
                     <button type="submit" class="button" name="submit">Envoyer</button>
                 </form>
