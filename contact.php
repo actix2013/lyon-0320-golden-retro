@@ -8,14 +8,19 @@ $firstName = "";
 $email = "";
 $message = "";
 $formAlredySend = isset($_POST['submit']);
-
+$callDeleteMessage = isset($_POST['deleteClick']);
 // Traitement global , appel des fonctions
+
+
 if ($formAlredySend) {
-    $valid = isFormValid($DEBUG,$firstName,$email,$message,$errors);
+    $valid = isFormValid($DEBUG, $firstName, $email, $message, $errors);
     if ($valid) {
         //writteOnDatabase();
-        writteOnDatabaseWithPrepare($DEBUG,$email,$firstName,$message);
+        writteOnDatabaseWithPrepare($DEBUG, $email, $firstName, $message);
     }
+// destection de demande de suppression de formulaire
+}elseif($callDeleteMessage){
+    deleteOnDatabaseWithPrepare(false,$_POST['objectId']);
 
 }
 
@@ -26,23 +31,23 @@ if ($formAlredySend) {
  * Global var used : one for each value of form.
  * Global  var $errors used and updated  with  detected errors
  */
-function isFormValid(bool $DEBUG , string &$firstName, string &$email , string &$message , array &$errors): bool
+function isFormValid(bool $DEBUG, string &$firstName, string &$email, string &$message, array &$errors): bool
 {
-    $firstName= trim( $_POST['firstName']);
+    $firstName = trim($_POST['firstName']);
     $email = $_POST['email'];
     $message = $_POST['message'];
     $noError = true;
 
-    if($DEBUG)var_dump($firstName);
+    if ($DEBUG) var_dump($firstName);
 
 
     // controle de conformité pour fisrtname
     if (empty($firstName)) {
-        if($DEBUG)echo PHP_EOL ."******************** Detection first name est empty <br>" . PHP_EOL;
+        if ($DEBUG) echo PHP_EOL . "******************** Detection first name est empty <br>" . PHP_EOL;
         $errors['firstName'] = "Merci de remplir le champ nom";
         $noError = false;
     } elseif (strlen($firstName) > 45) {
-        if($DEBUG)echo PHP_EOL ."******************** Detection first name trop grand <br>" . PHP_EOL;
+        if ($DEBUG) echo PHP_EOL . "******************** Detection first name trop grand <br>" . PHP_EOL;
         $errors['firstName'] = "Le champ prénon est trop long , il doit etre inférieur a 45 lettres.";
         $noError = false;
     }
@@ -50,11 +55,11 @@ function isFormValid(bool $DEBUG , string &$firstName, string &$email , string &
     // controle de conformitée pour email
 
     if (empty($email)) {
-        if($DEBUG)echo PHP_EOL ."******************** Detection email empty  <br>" . PHP_EOL;
+        if ($DEBUG) echo PHP_EOL . "******************** Detection email empty  <br>" . PHP_EOL;
         $errors['email'] = "Merci de remplir le champ email";
         $noError = false;
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        if($DEBUG)echo PHP_EOL ."******************** Detection email invalide <br>" . PHP_EOL;
+        if ($DEBUG) echo PHP_EOL . "******************** Detection email invalide <br>" . PHP_EOL;
         $errors['email'] = "Le champ email n'a pas été valider , merci de corriger";
         $noError = false;
     }
@@ -72,14 +77,14 @@ function isFormValid(bool $DEBUG , string &$firstName, string &$email , string &
 /*
  * Ecrit dans la database avec prepation pour controle antiinjection
  */
-function writteOnDatabaseWithPrepare(bool $DEBUG, string &$email, string &$firstName , string &$message )
+function writteOnDatabaseWithPrepare(bool $DEBUG, string &$email, string &$firstName, string &$message)
 {
     try {
-        $state="New";
+        $state = "New";
         $pdo = new PDO(DSN, USER, PASS);
         $query = "INSERT INTO retro_invader.contact_messages(name, message,  email, state) VALUES (:nameP, :messageP, :emailP, :stateP)";
         $statement = $pdo->prepare($query);
-        if($statement){
+        if ($statement) {
             $statement->bindValue(":nameP", $firstName, PDO::PARAM_STR);
             $statement->bindValue(":emailP", $email, PDO::PARAM_STR);
             $statement->bindValue(":messageP", $message, PDO::PARAM_STR);
@@ -90,9 +95,8 @@ function writteOnDatabaseWithPrepare(bool $DEBUG, string &$email, string &$first
             $firstName = "";
             $email = "";
             $message = "";
-        }
-        else {
-            if($DEBUG)echo "Erreur de sntaxe lors de la preparation requette ";
+        } else {
+            if ($DEBUG) echo "Erreur de sntaxe lors de la preparation requette ";
             die('prepare() failed: ' . htmlspecialchars($pdo->error));
         }
 
@@ -111,7 +115,34 @@ function getMessageOnDatabase(): array
     $friendsinterne = $statementinterne->fetchAll(PDO::FETCH_CLASS);
     return $friendsinterne;
 }
-$messageList=getMessageOnDatabase();
+
+
+function deleteOnDatabaseWithPrepare(bool $DEBUG, string $id)
+{
+    try {
+        $state = "New";
+        $pdo = new PDO(DSN, USER, PASS);
+        $query = "DELETE FROM retro_invader.contact_messages WHERE id=:id";
+        $statement = $pdo->prepare($query);
+        if ($statement) {
+            $statement->bindValue(":id", $id, PDO::PARAM_INT);
+            $statement->execute();
+            /* pour remise a 0 des variables si pas de redirection vers success , evite 2 x le meme user si actualisation*/
+            $_POST = array();
+        } else {
+            if ($DEBUG) echo "Erreur de sntaxe lors de la preparation requette ";
+            die('prepare() failed: ' . htmlspecialchars($pdo->error));
+        }
+
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage() . "<br/>";
+    }
+   ;
+    //header('Location: /success.php?message=' . $message);
+}
+
+
+$messageList = getMessageOnDatabase();
 
 ?>
     <main>
@@ -135,28 +166,44 @@ $messageList=getMessageOnDatabase();
                         <label for="firstName"></label>
                         <input type="text" id="firstName" name="firstName" placeholder="non , prenom , pseudo"
                                value=<?= $firstName ?>>
-                        <?php if (isset($errors['firstName'])) $helpName=$errors['firstName']; else  $helpName=" "; ?>
-                            <small id="firstNameHelp" class="form-text text-error">
-                                <?php echo $helpName; ?>
-                            </small>
-
+                        <?php
+                        $classe = "form-text text-error";
+                        if (isset($errors['firstName'])) {
+                            $helpName = $errors['firstName'];
+                        } else {
+                            $helpName = "Champ obligatoire , 45 carateres max.";
+                            $classe = "form-text";
+                        } ?>
+                        <small id="firstNameHelp" class="<?= $classe ?>">
+                            <?php echo $helpName; ?>
+                        </small>
                     </div>
                     <div class="form-group">
                         <label for="email"></label>
                         <input type="email" id="email" name="email" placeholder="Mail" value=<?= $email ?>>
-                        <?php if (isset($errors['email'])) { $helpEmail=$errors['email'];}else{$helpEmail=" ";} ?>
-                            <small id="emailHelp" class="form-text text-error">
-                                <?php echo $helpEmail; ?>
-                            </small>
+                        <?php if (isset($errors['email'])) {
+                            $helpEmail = $errors['email'];
+                        } else {
+                            $classe = "form-text";
+                            $helpEmail = "Champ obligatoire , l'emai l doit etre valide.";
+                        } ?>
+                        <small id="emailHelp" class="<?= $classe ?>">
+                            <?php echo $helpEmail; ?>
+                        </small>
 
                     </div>
                     <div class="form-group">
                         <label for="msg"></label>
                         <textarea id="msg" name="message" placeholder="Message"><?= $message ?></textarea>
-                        <?php if (isset($errors['message']))  { $helpMessage=$errors['message'];}else{$helpMessage=" ";} ?>
-                            <small id="messageHelp" class="form-text text-error">
-                                <?php echo $helpMessage; ?>
-                            </small>
+                        <?php if (isset($errors['message'])) {
+                            $helpMessage = $errors['message'];
+                        } else {
+                            $classe = "form-text";
+                            $helpMessage = "Champ  obligatoire.";
+                        } ?>
+                        <small id="messageHelp" class="<?= $classe ?>">
+                            <?php echo $helpMessage; ?>
+                        </small>
 
                     </div>
                     <button type="submit" class="button" name="submit">Envoyer</button>
@@ -165,32 +212,67 @@ $messageList=getMessageOnDatabase();
 
         </div>
         <div class="contact">
-            <div >
+            <div>
                 <h5>Historique des messages : </h5>
                 <div>
                     <ul class="list-group">
-                        <?php for ($i = 0; $i < count($messageList); $i++) {
+                        <?php for ($i = 0; $i < count($messageList) && $i < 3; $i++) {
                             $obj = $messageList[$i];
-                            switch ($obj->state){
+                            switch ($obj->state) {
                                 case "Terminer":
-                                    $classList="list-group-item list-group-item-success";
+                                    $classList = "list-group-item list-group-item-success";
                                     break;
                                 case "Traitement en cour":
-                                    $classList="list-group-item list-group-item-warning";
+                                    $classList = "list-group-item list-group-item-warning";
                                     break;
                                 case "New":
-                                    $classList="list-group-item list-group-item-info";
+                                    $classList = "list-group-item list-group-item-info";
                                     break;
                                 Default :
-                                    $classList="list-group-item list-group-item-secondary";
+                                    $classList = "list-group-item list-group-item-secondary";
                                     break;
 
 
                             }
 
                             ?>
-                            <li class="<?php echo $classList?>">
-                                <?php echo "Message from  " . $obj->name . ". Sending date :" . $obj->dateOfCeation . " State : " . $obj->state . "<br>"; ?>
+                            <li class="<?php echo $classList ?>">
+
+                                <form action="" method="post" ;>
+                                    <?php
+                                    //var_dump($obj);
+                                    //var_dump($_POST);
+                                    $controlValueOfSelectedMessage=$obj->id;
+                                    ?>
+                                    <p> <?= "Message from  " . $obj->name . ". Sending date :" . $obj->dateOfCeation . " State : " . $obj->state . "<br>"; ?></p>
+                                    <input type="hidden" name="objectId" value="<?=$controlValueOfSelectedMessage?>">
+                                    <button type="submit" class="btn btn-outline-secondary" name="showMessageClick" value="true" >Afficher
+                                        Message
+                                    </button>
+                                    <button type="submit" class="btn btn-outline-success" name="setTerminateClick" value="true">Traitement
+                                        Terminer
+                                    </button>
+                                    <button type="submit" class="btn btn-outline-danger" name="deleteClick" value="true">Supprimer
+                                    </button>
+                                    <?php
+                                    var_dump($controlValueOfSelectedMessage);
+                                    var_dump($_POST);
+                                    echo "<p>*------------Valeur objet id en cours : $obj->id  et valeur post id ---".$_POST['$obj->id'] . "</p>";
+                                    if($_POST["objectId"]===$controlValueOfSelectedMessage) {
+                                        echo "<p>*------------------------ dtection egalitée de click ------------------------*</p>";
+                                        if (!empty($_POST['showMessageClick'])) {
+                                            echo "Affichage du  message non implementée !!!<br>";
+                                        }
+                                        if (isset($_POST['setTerminateClick'])) {
+                                            echo "Changement de status non implementée !!!<br>";
+                                        }
+                                        if (isset($_POST['deleteClick'])) {
+                                            echo "Supression non implementé !!!<br>";
+                                        }
+                                    }
+
+                                    ?>
+                                </form>
                             </li>
                         <?php } ?>
                     </ul>
