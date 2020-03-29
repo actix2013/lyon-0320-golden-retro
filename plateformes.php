@@ -20,13 +20,13 @@ require 'includes/_header.php';
 
             <h2>Select your platform</h2>
             <div class="nav-platforms-links-container">
-                <h2><a href="#" onclick="reloadPArtPage('vide');return false;">Toutes plateformes</a></h2>
-                <h2><a href="#" onclick="reloadPArtPage('Genesis');return false;">Genesis</a></h2>
-                <h2><a href="#" onclick="reloadPArtPage('NES');return false;">NES Classic</a></h2>
-                <h2><a href="#" onclick="reloadPArtPage('Dreamcast');return false;">Dreamcast</a></h2>
-                <h2><a href="#" onclick="reloadPArtPage('Nintendo 64');return false;">Nintendo 64</a></h2>
-                <h2><a href="#" onclick="reloadPArtPage('Arcade');return false;">Arcade</a></h2>
-                <h2><a href="#" onclick="reloadPArtPage('Super Nintendo');return false;">Super Nintendo</a></h2>
+                <h2><a href="#" onclick="reloadPArtPage('vide','Cards/_Games_Platfomr.php');return false;">Toutes plateformes</a></h2>
+                <h2><a href="#" onclick="reloadPArtPage('Genesis','Cards/_Games_Platfomr.php');return false;">Genesis</a></h2>
+                <h2><a href="#" onclick="reloadPArtPage('NES','Cards/_Games_Platfomr.php');return false;">NES Classic</a></h2>
+                <h2><a href="#" onclick="reloadPArtPage('Dreamcast','Cards/_Games_Platfomr.php');return false;">Dreamcast</a></h2>
+                <h2><a href="#" onclick="reloadPArtPage('Nintendo 64','Cards/_Games_Platfomr.php');return false;">Nintendo 64</a></h2>
+                <h2><a href="#" onclick="reloadPArtPage('Arcade','Cards/_Games_Platfomr.php');return false;">Arcade</a></h2>
+                <h2><a href="#" onclick="reloadPArtPage('Super Nintendo','Cards/_Games_Platfomr.php');return false;">Super Nintendo</a></h2>
             </div>
         </nav>
 

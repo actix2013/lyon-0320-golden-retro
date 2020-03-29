@@ -1,0 +1,318 @@
+/*Version mobile*/
+h1, h2, h3, h4, h5, h6 {
+    font-family:Gilroy,Montserrat;
+}
+body {
+    margin:0px;
+}
+p {
+    font-family:Roboto;
+}
+.button {
+    padding:10px 25px;
+    background-color:#52ae32;
+    border-radius:20px;
+    color:white;
+    text-decoration:none;
+    text-align:center;
+    transition:all 0.2s ease-in-out;
+    border:1px solid transparent;
+    font-family:Gilroy, Montserrat;
+    font-weight:lighter;
+    font-size:15px;
+}
+.button-on-hover {
+    opacity:0;
+    transition:all 0.2s ease-in-out;
+    position:absolute;
+    bottom:10px;
+}
+.bloc-admin-container{
+    width:100%!important;
+}
+.bloc:hover .button-on-hover {
+    display:block;
+    opacity:1;
+    bottom:20px;
+}
+.button-on-hover:hover {
+    background-color:white;
+    border:1px solid #52ae32;
+    color:#52ae32;
+}
+.banner-platforms {
+    width:100%;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    background-image:linear-gradient(to bottom, black, rgba(0,0,0,0)), url(../Images/Platforms/platforms-banner.jpg);
+    background-position:center;
+    background-size:cover;
+    background-repeat:no-repeat;
+    color:white;
+}
+.nav-admin
+{
+    display: flex;
+    background-color: white;
+    box-shadow: 2px 3px 6px lightgrey;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 0.9em;
+    flex-direction: column;
+    color:#52ae32;
+}
+.nav-admin>h2:nth-child(1) {
+    color:black;
+    text-align:center;
+}
+.nav-admin {
+    position: sticky;
+    top: 0;
+    z-index: 99999;
+}
+.nav-admin-links-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap:wrap;
+    padding:0px 20px;
+}
+.nav-admin h2 a {
+    color:#52ae32;
+    text-decoration:none;
+    font-family:Gilroy,Montserrat;
+    font-weight:lighter;
+    font-size:18px;
+    transition:all 0.2s ease-in-out;
+}
+.nav-admin h2 a:hover {
+    font-weight:bold;
+}
+
+nav h2
+{
+    padding:0 10px;
+}
+
+.nav-and-bloc-container-admin section
+{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    height : 100%;
+
+
+
+}
+
+.bloc
+{
+    height: 200px;
+    width: 80%;
+    background-color: lightgrey;
+    margin: 20px;
+    border-radius: 20px;
+    box-shadow: 2px 3px 6px lightgrey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    position: relative;
+    flex-direction:column;
+}
+.bloc span{
+    position: absolute;
+    top:0;
+    left:30px;
+    background-color: #52ae32;
+    color: white;
+    padding: 10px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    box-shadow: 0px 2px 5px grey;
+}
+
+.bloc-admin-container {
+    width:calc(100vw - 15vh);
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    flex-direction: column;
+}
+.bloc.super-mario-bros-2-container {
+    background-image:linear-gradient(rgba(107, 107, 107, 0), rgba(107, 107, 107, 0.5)), url(https://raw.githubusercontent.com/WildCodeSchool/lyon-0320-golden-retro/dev/Images/Jeux/supermariobros.jpg);
+    background-position:center;
+    background-size:cover;
+}
+.bloc.sonic-the-hedgehog-2-container {
+    background-image:linear-gradient(rgba(107, 107, 107, 0), rgba(107, 107, 107, 0.5)), url(https://raw.githubusercontent.com/WildCodeSchool/lyon-0320-golden-retro/geoffroy/Images/Jeux/sonic.jpg);
+    background-position:center;
+    background-size:cover;
+
+}
+.bloc.pac-man-container {
+    background-image:linear-gradient(rgba(107, 107, 107, 0), rgba(107, 107, 107, 0.5)), url(https://raw.githubusercontent.com/WildCodeSchool/lyon-0320-golden-retro/geoffroy/Images/Jeux/pacman-149704_1280.png);
+    background-position:center;
+    background-size:cover;
+}
+.bloc.street-fighter-container {
+    background-image:linear-gradient(rgba(107, 107, 107, 0), rgba(107, 107, 107, 0.5)), url(https://raw.githubusercontent.com/WildCodeSchool/lyon-0320-golden-retro/geoffroy/Images/Jeux/Street_Fighter_old_logo.png);
+    background-position:center;
+    background-size:cover;
+}
+.bloc.tloz-alttp-container {
+    background-image: linear-gradient(rgba(107, 107, 107, 0), rgba(107, 107,107, 0.5)), url(https://raw.githubusercontent.com/WildCodeSchool/lyon-0320-golden-retro/dev/Images/Jeux/zelda-link-to-the-past.png);
+    background-position:center;
+    background-size:cover;
+}
+.bloc.tloz-mm-container {
+    background-image: linear-gradient(rgba(107, 107, 107, 0), rgba(107, 107,107, 0.5)), url(https://raw.githubusercontent.com/WildCodeSchool/lyon-0320-golden-retro/dev/Images/Jeux/majora-mask.png);
+    background-position:center;
+    background-size:cover;
+}
+.bloc.tloz-oot-container {
+    background-image: linear-gradient(rgba(107, 107, 107, 0), rgba(107, 107,107, 0.5)), url(https://raw.githubusercontent.com/WildCodeSchool/lyon-0320-golden-retro/dev/Images/Jeux/ocarina-of-time.png);
+    background-position:center;
+    background-size:cover;
+}
+.bloc.aladdin-container {
+    background-image: linear-gradient(rgba(107, 107, 107, 0), rgba(107, 107,107, 0.5)), url(https://raw.githubusercontent.com/WildCodeSchool/lyon-0320-golden-retro/dev/Images/Jeux/aladdin.jpg);
+    background-position:center;
+    background-size:cover;
+}
+.bloc.altered-beast-container {
+    background-image: linear-gradient(rgba(107, 107, 107, 0), rgba(107, 107,107, 0.5)), url(https://raw.githubusercontent.com/WildCodeSchool/lyon-0320-golden-retro/dev/Images/Jeux/altered-beast.jpg);
+    background-position:center;
+    background-size:cover;
+}
+.bloc.kirby-dreamland-container {
+    background-image: linear-gradient(rgba(107, 107, 107, 0), rgba(107, 107,107, 0.5)), url(https://raw.githubusercontent.com/WildCodeSchool/lyon-0320-golden-retro/dev/Images/Jeux/kirby-dream-land.png);
+    background-position:center;
+    background-size:cover;
+}
+.bloc.lion-king-container {
+    background-image: linear-gradient(rgba(107, 107, 107, 0), rgba(107, 107,107, 0.5)), url(https://raw.githubusercontent.com/WildCodeSchool/lyon-0320-golden-retro/dev/Images/Jeux/lion-king.jpg);
+    background-position:center;
+    background-size:cover;
+}
+.bloc.metal-slug-container {
+    background-image: linear-gradient(rgba(107, 107, 107, 0), rgba(107, 107,107, 0.5)), url(https://raw.githubusercontent.com/WildCodeSchool/lyon-0320-golden-retro/dev/Images/Jeux/metal-slug.jpg);
+    background-position:center;
+    background-size:cover;
+}
+.bloc.super-mario-64-container {
+    background-image: linear-gradient(rgba(107, 107, 107, 0), rgba(107, 107,107, 0.5)), url(https://raw.githubusercontent.com/WildCodeSchool/lyon-0320-golden-retro/dev/Images/Jeux/mario-64.png);
+    background-position:center;
+    background-size:cover;
+}
+.bloc.virtual-tennis-container {
+    background-image: linear-gradient(rgba(107, 107, 107, 0), rgba(107, 107,107, 0.5)), url(https://i.ytimg.com/vi/Vs0XUKHeYpc/maxresdefault.jpg);
+    background-position:center;
+    background-size:cover;
+}
+
+.bloc h3{
+    font-size: 24px;
+}
+
+.bloc span{
+    font-size: 12px;
+    font-family: Gilroy, Montserrat;
+}
+
+/*Version Desktop*/
+@media screen and (min-width: 961px)
+{
+    .banner-platforms {
+        width:100%;
+        height:10vh;
+    }
+    .nav-admin-links-container {
+        flex-direction:column;
+    }
+    .nav-admin
+    {
+        position: sticky;
+        display: flex;
+        flex-direction: column;
+        width: 300px;
+        min-height :30vh;
+        background-color:white;
+        padding: 20px;
+        box-shadow: 2px 3px 6px lightgrey;
+        border-radius: 5px;
+        z-index: 9999;
+        top:0;
+    }
+    .nav-admin h2 {
+        margin-top:-9px;
+        padding-bottom:15px;
+    }
+    .nav-admin h2 {
+        border-bottom:1px solid #efefef;
+    }
+    .nav-admin h2:nth-child(7) {
+        border-bottom:none;
+    }
+    .nav-admin>h2:nth-child(1) {
+        border-bottom:none;
+        text-align:center;
+    }
+    .nav-and-bloc-container-admin {
+        width: 100%;
+        position: relative;
+        min-height:550px;
+    }
+    .nav-and-bloc-container-admin section
+    {
+        width: 100%;
+        margin-top:-30vh;
+    }
+
+    .bloc-admin-container{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding-left:350px;
+        box-sizing:border-box;
+        justify-content:left;
+        magin-top: -1500px;
+
+    }
+
+    .bloc
+    {
+        height: 200px;
+        width: calc(38% - 200px);
+        background-color: lightgrey;
+        margin: 20px;
+        transition: all 0.2s ease-in-out;
+        min-width:280px;
+    }
+
+    .bloc:hover{
+        transform: scale(1.03);
+    }
+    .banner-platforms {
+        margin-bottom:50px;
+    }
+    .nav-admin h2 {
+        margin-left:0px;
+    }
+    nav h2
+    {
+        margin-left: 25px;
+        padding:0;
+    }
+
+
+
+}
+@media all and (max-width:760px) {
+    .nav-admin-links-container h2 a {
+        font-size:15px;
+    }
+}

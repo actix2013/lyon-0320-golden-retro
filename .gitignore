@@ -1,4 +1,6 @@
 !/nbproject/
 *connect.php*
 !/Archives/
-*contact_Functions_Globals.php*
+/Archives/contact_Functions_Globals.php*
+!/Archives/*.php
+contact_Functions_Globals.php*

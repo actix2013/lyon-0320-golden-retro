@@ -211,74 +211,7 @@ $messageList = getMessageOnDatabase();
             </div>
 
         </div>
-        <div class="contact">
-            <div>
-                <h5>Historique des messages : </h5>
-                <div>
-                    <ul class="list-group">
-                        <?php for ($i = 0; $i < count($messageList) && $i < 3; $i++) {
-                            $obj = $messageList[$i];
-                            switch ($obj->state) {
-                                case "Terminer":
-                                    $classList = "list-group-item list-group-item-success";
-                                    break;
-                                case "Traitement en cour":
-                                    $classList = "list-group-item list-group-item-warning";
-                                    break;
-                                case "New":
-                                    $classList = "list-group-item list-group-item-info";
-                                    break;
-                                Default :
-                                    $classList = "list-group-item list-group-item-secondary";
-                                    break;
 
-
-                            }
-
-                            ?>
-                            <li class="<?php echo $classList ?>">
-
-                                <form action="" method="post" ;>
-                                    <?php
-                                    //var_dump($obj);
-                                    //var_dump($_POST);
-                                    $controlValueOfSelectedMessage=$obj->id;
-                                    ?>
-                                    <p> <?= "Message from  " . $obj->name . ". Sending date :" . $obj->dateOfCeation . " State : " . $obj->state . "<br>"; ?></p>
-                                    <input type="hidden" name="objectId" value="<?=$controlValueOfSelectedMessage?>">
-                                    <button type="submit" class="btn btn-outline-secondary" name="showMessageClick" value="true" >Afficher
-                                        Message
-                                    </button>
-                                    <button type="submit" class="btn btn-outline-success" name="setTerminateClick" value="true">Traitement
-                                        Terminer
-                                    </button>
-                                    <button type="submit" class="btn btn-outline-danger" name="deleteClick" value="true">Supprimer
-                                    </button>
-                                    <?php
-                                    var_dump($controlValueOfSelectedMessage);
-                                    var_dump($_POST);
-                                    echo "<p>*------------Valeur objet id en cours : $obj->id  et valeur post id ---".$_POST['$obj->id'] . "</p>";
-                                    if($_POST["objectId"]===$controlValueOfSelectedMessage) {
-                                        echo "<p>*------------------------ dtection egalitée de click ------------------------*</p>";
-                                        if (!empty($_POST['showMessageClick'])) {
-                                            echo "Affichage du  message non implementée !!!<br>";
-                                        }
-                                        if (isset($_POST['setTerminateClick'])) {
-                                            echo "Changement de status non implementée !!!<br>";
-                                        }
-                                        if (isset($_POST['deleteClick'])) {
-                                            echo "Supression non implementé !!!<br>";
-                                        }
-                                    }
-
-                                    ?>
-                                </form>
-                            </li>
-                        <?php } ?>
-                    </ul>
-                </div>
-            </div>
-        </div>
 
 
     </main>

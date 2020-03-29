@@ -22,6 +22,7 @@
     <link rel="stylesheet" type="text/css" href="../css/contact_style.css">
     <link rel="stylesheet" type="text/css" href="../css/plateformes_style.css">
     <link rel="stylesheet" type="text/css" href="../css/about_us_style.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
 
 <body>
