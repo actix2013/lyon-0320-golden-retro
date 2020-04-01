@@ -4,3 +4,8 @@
 /Archives/contact_Functions_Globals.php*
 !/Archives/*.php
 contact_Functions_Globals.php*
+!/Archives/contact_Avant_tranfert_liste_vers_page_admin.php
+contact_Avant_tranfert_liste_vers_page_admin.php*
+!/Archives/_Contacts_list.php
+/Archives/_Contacts_list.php
+*index_form.php*

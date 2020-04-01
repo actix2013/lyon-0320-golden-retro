@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <?php
-$title = "Plateformes";
-$cookie_name = "filterPlatformName";
-$cookie_value = "vide";
-setcookie($cookie_name, $cookie_value);
+$docRoot=$_SERVER['DOCUMENT_ROOT'];
+$title = "Administration";
 require 'includes/_header.php';
 ?>
 
@@ -21,20 +19,24 @@ require 'includes/_header.php';
 
             <h2>Select task :</h2>
             <div class="nav-admin-links-container">
-                <h2><a href="#" onclick="reloadPArtPage('messages','Cards/_Contacts_list.php');return false;">Admin messages</a></h2>
+                <h2><a href="#" onclick="reloadPArtPage('messages','Cards/Contact_list.php');return false;">Admin messages</a></h2>
                 <h2><a href="#" onclick="reloadPArtPage('vide','Cards/_Games_Platfomr.php');return false;">Admin games</a></h2>
-                <h2><a href="#" onclick="reloadPArtPage('platforms','');return false;">Admin platforms</a></h2>
+                <h2><a href="#" onclick="reloadPArtPage('filterCardAdmin','platforms','');return false;">Admin platforms</a></h2>
             </div>
         </nav>
 
         <section >
             <div id=relodOnLinkClick class="bloc-admin-container">
-
                 <?php
-                $filtreParCokies =  $_COOKIE['filterPlatformName'];
+
+                    if(!empty( $_COOKIE['filterCardAdmin'])){
+                        $filtreParCokies =  $_COOKIE['filterCardAdmin'];
+                    }else {
+                        $filtreParCokies = "messages";
+                    }
                 switch($filtreParCokies){
                     case "messages" :
-                        include 'Cards/_Contacts_list.php';
+                        include $docRoot.'/Cards/Contact_list.php';
                         break;
                     case "vide" :
                         include 'Cards/_Games_Platfomr.php';
@@ -43,7 +45,7 @@ require 'includes/_header.php';
 
                         break;
                     Default :
-                        var_dump( $filtreParCokies);
+                        include $docRoot.'/Cards/Contact_list.php';
                         break;
                 }
 

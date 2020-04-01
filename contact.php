@@ -10,17 +10,18 @@ $message = "";
 $formAlredySend = isset($_POST['submit']);
 $callDeleteMessage = isset($_POST['deleteClick']);
 // Traitement global , appel des fonctions
-
+$success = false;
 
 if ($formAlredySend) {
     $valid = isFormValid($DEBUG, $firstName, $email, $message, $errors);
     if ($valid) {
         //writteOnDatabase();
         writteOnDatabaseWithPrepare($DEBUG, $email, $firstName, $message);
+        $sucess = true;
     }
 // destection de demande de suppression de formulaire
-}elseif($callDeleteMessage){
-    deleteOnDatabaseWithPrepare(false,$_POST['objectId']);
+} elseif ($callDeleteMessage) {
+    deleteOnDatabaseWithPrepare(false, $_POST['objectId']);
 
 }
 
@@ -107,42 +108,6 @@ function writteOnDatabaseWithPrepare(bool $DEBUG, string &$email, string &$first
     //header('Location: /success.php?message=' . $message);
 }
 
-function getMessageOnDatabase(): array
-{
-    $pdointerne = new PDO(DSN, USER, PASS);
-    $queryinterne = "SELECT * FROM retro_invader.contact_messages";
-    $statementinterne = $pdointerne->query($queryinterne);
-    $friendsinterne = $statementinterne->fetchAll(PDO::FETCH_CLASS);
-    return $friendsinterne;
-}
-
-
-function deleteOnDatabaseWithPrepare(bool $DEBUG, string $id)
-{
-    try {
-        $state = "New";
-        $pdo = new PDO(DSN, USER, PASS);
-        $query = "DELETE FROM retro_invader.contact_messages WHERE id=:id";
-        $statement = $pdo->prepare($query);
-        if ($statement) {
-            $statement->bindValue(":id", $id, PDO::PARAM_INT);
-            $statement->execute();
-            /* pour remise a 0 des variables si pas de redirection vers success , evite 2 x le meme user si actualisation*/
-            $_POST = array();
-        } else {
-            if ($DEBUG) echo "Erreur de sntaxe lors de la preparation requette ";
-            die('prepare() failed: ' . htmlspecialchars($pdo->error));
-        }
-
-    } catch (PDOException $e) {
-        print "Erreur !: " . $e->getMessage() . "<br/>";
-    }
-   ;
-    //header('Location: /success.php?message=' . $message);
-}
-
-
-$messageList = getMessageOnDatabase();
 
 ?>
     <main>
@@ -157,61 +122,18 @@ $messageList = getMessageOnDatabase();
             </div>
 
         </section>
-        <div class="middle">
 
-            <div class="form container">
-                <h2>Get in Touch !</h2>
-                <form action="" method="post">
-                    <div class="form-group">
-                        <label for="firstName"></label>
-                        <input type="text" id="firstName" name="firstName" placeholder="non , prenom , pseudo"
-                               value=<?= $firstName ?>>
-                        <?php
-                        $classe = "form-text text-error";
-                        if (isset($errors['firstName'])) {
-                            $helpName = $errors['firstName'];
-                        } else {
-                            $helpName = "Champ obligatoire , 45 carateres max.";
-                            $classe = "form-text";
-                        } ?>
-                        <small id="firstNameHelp" class="<?= $classe ?>">
-                            <?php echo $helpName; ?>
-                        </small>
-                    </div>
-                    <div class="form-group">
-                        <label for="email"></label>
-                        <input type="email" id="email" name="email" placeholder="Mail" value=<?= $email ?>>
-                        <?php if (isset($errors['email'])) {
-                            $helpEmail = $errors['email'];
-                        } else {
-                            $classe = "form-text";
-                            $helpEmail = "Champ obligatoire , l'emai l doit etre valide.";
-                        } ?>
-                        <small id="emailHelp" class="<?= $classe ?>">
-                            <?php echo $helpEmail; ?>
-                        </small>
+        <?php
+            if ($sucess) { ?>
+                <div class="contact-banner-content-container">
+                    <?= "Victory , your message have been sent. ";?>
+                </div>
+                <?php
+            } else {
+                require_once "Cards/Contact_Form.php";
+            }
 
-                    </div>
-                    <div class="form-group">
-                        <label for="msg"></label>
-                        <textarea id="msg" name="message" placeholder="Message"><?= $message ?></textarea>
-                        <?php if (isset($errors['message'])) {
-                            $helpMessage = $errors['message'];
-                        } else {
-                            $classe = "form-text";
-                            $helpMessage = "Champ  obligatoire.";
-                        } ?>
-                        <small id="messageHelp" class="<?= $classe ?>">
-                            <?php echo $helpMessage; ?>
-                        </small>
-
-                    </div>
-                    <button type="submit" class="button" name="submit">Envoyer</button>
-                </form>
-            </div>
-
-        </div>
-
+        ?>
 
 
     </main>

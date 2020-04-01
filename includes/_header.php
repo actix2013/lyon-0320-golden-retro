@@ -42,6 +42,9 @@
             <a href="contact.php">
                 <li>Contact</li>
             </a>
+            <a href="admin2.php">
+                <li>Administration</li>
+            </a>
         </ul>
     </nav>
 
@@ -71,6 +74,7 @@
             <li><a href="/plateformes.php">Platforms</a></li>
             <li><a href="/about_us.php">About Us</a></li>
             <li><a href="/contact.php" >Contact</a></li>
+            <li><a href="/admin2.php" >Administration</a></li>
         </ul>
     </nav>
 </header>

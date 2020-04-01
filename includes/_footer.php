@@ -70,12 +70,13 @@
     </section>
 </footer>
 
-
+<script type="text/javascript">
 <?php
+
 require 'js/_burger_menu_click.js';
 require  'js/_reload_Part_Page_On_Click.js';
 ?>
-
+</script>
 
 </body>
 </html>
